@@ -1,5 +1,6 @@
 resource "aws_iam_role" "ocm_role" {
-  name = "ManagedOpenShift-OCM-Role-${var.external_id}"
+  count = length(var.ocm_orgs)
+  name = "ManagedOpenShift-OCM-Role-${var.ocm_orgs[count.index].external_id}"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -8,7 +9,7 @@ resource "aws_iam_role" "ocm_role" {
         Effect = "Allow"
         Condition = {
             StringEquals = {                
-                "sts:ExternalId" = var.org_id
+                "sts:ExternalId" = var.ocm_orgs[count.index].external_id
             }
         }
         Principal = {
@@ -26,6 +27,7 @@ resource "aws_iam_role" "ocm_role" {
 }
 
 resource "aws_iam_policy" "ocm_role_policy" {
+  count = length(var.ocm_orgs) == 0 ? 0 : 1
   name        = "ManagedOpenShift-OCM-Role-Policy"
   policy = "${file("${path.module}/sts_ocm_permission_policy.json")}"
 
@@ -38,7 +40,8 @@ resource "aws_iam_policy" "ocm_role_policy" {
 }
 
 resource "aws_iam_policy_attachment" "ocm_role_policy_attachment" {
+  count = length(var.ocm_orgs) == 0 ? 0 : 1
   name       = "ocm-role-policy-attachment"
-  roles      = [aws_iam_role.ocm_role.name]
-  policy_arn = aws_iam_policy.ocm_role_policy.arn
+  roles      = aws_iam_role.ocm_role.*.name
+  policy_arn = aws_iam_policy.ocm_role_policy[0].arn
 }

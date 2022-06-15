@@ -3,11 +3,12 @@ variable redhat_aws_account_id {
     default = "710019948333"
 }
 
-variable ocm_orgs {
-    description = "ocm orgs"
+variable ocm_users {
+    description = "ocm users account id and username"
     type = list(object({
-        org_id = string
-        external_id = string
+        id = string
+        user_name = string
     }))
     default = []
 }
+

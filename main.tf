@@ -15,10 +15,13 @@ module account_role {
 }
 
 module ocm_role {
-    count = var.create_ocm_role ? 1 : 0
     source = "./ocm_role"
     redhat_aws_account_id = var.redhat_aws_account_id
-    rosa_openshift_version = var.rosa_openshift_version
-    org_id = var.org_id
-    external_id = var.external_id
+    ocm_orgs = var.ocm_orgs
+}
+
+module user_role {
+    source = "./user_role"
+    redhat_aws_account_id = var.redhat_aws_account_id
+    ocm_users = var.ocm_users
 }
