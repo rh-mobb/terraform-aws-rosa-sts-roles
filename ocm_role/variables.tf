@@ -8,22 +8,10 @@ variable rosa_openshift_version {
     default = "4.10"
 }
 
-variable create_account_roles {
-    type = bool
-    default = false
-}
-
-variable create_ocm_role {
-    type = bool
-    default = false
-}
-
 variable org_id {
     type = string
-    default = ""
 }
 
 variable external_id {
     type = string
-    default = ""
 }
