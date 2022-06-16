@@ -25,3 +25,8 @@ module user_role {
     redhat_aws_account_id = var.redhat_aws_account_id
     ocm_users = var.ocm_users
 }
+
+module operator_role {
+    source = "./operator_roles"
+    clusters = var.clusters
+}

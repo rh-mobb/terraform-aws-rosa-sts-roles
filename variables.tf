@@ -31,3 +31,12 @@ variable ocm_users {
     default = []
 }
 
+variable clusters {
+    description = "clusters information for operator roles"
+    type = list(object({
+        id = string
+        operator_role_suffix = string
+    }))
+    default = []
+}
+
