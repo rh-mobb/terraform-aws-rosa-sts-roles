@@ -7,8 +7,8 @@ Create rosa roles, policies and identity provider in an declarative way
 In order to deploy [ROSA](https://docs.openshift.com/rosa/welcome/index.html) with [STS](https://docs.openshift.com/rosa/rosa_planning/rosa-sts-aws-prereqs.html), AWS Account needs to have the following roles placed:
 
 * Account Roles (One per AWS account)
-* OCM Roles (For OCM UI)
-* User Role (For OCM UI)
+* OCM Roles (For OCM UI, One per OCM Org)
+* User Role (For OCM UI, One per user live in ocm org)
 * Operator Roles (One Per Cluster)
 
 This terraform module tries to replicate rosa CLI roles/policies creation so that:
