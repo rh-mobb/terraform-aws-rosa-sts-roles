@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # terraform-aws-rosa-sts-roles
 Create rosa roles, policies and identity provider in an declarative way
 =======
@@ -110,5 +109,3 @@ module sts_roles {
     }]
 }
 ```
-
->>>>>>> 77102e4 (add a readme)
