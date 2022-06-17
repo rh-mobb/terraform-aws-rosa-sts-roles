@@ -1,7 +1,7 @@
 # terraform-aws-rosa-sts-roles
+
 Create rosa roles, policies and identity provider in an declarative way
-=======
-# Terraform AWS ROSA STS Roles
+Terraform AWS ROSA STS Roles
 
 In order to deploy [ROSA](https://docs.openshift.com/rosa/welcome/index.html) with [STS](https://docs.openshift.com/rosa/rosa_planning/rosa-sts-aws-prereqs.html), AWS Account needs to have the following roles placed:
 
