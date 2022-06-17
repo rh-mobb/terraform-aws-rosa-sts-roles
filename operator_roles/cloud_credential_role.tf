@@ -1,6 +1,6 @@
 resource "aws_iam_role" "cloud-credential_role" {
   count = length(var.clusters)
-  name = "${var.clusters[count.index].operator_role_suffix}-openshift-cloud-credential-operator-cloud-c"
+  name = "${var.clusters[count.index].operator_role_prefix}-openshift-cloud-credential-operator-cloud-c"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [

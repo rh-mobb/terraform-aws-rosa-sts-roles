@@ -1,6 +1,6 @@
 resource "aws_iam_role" "image_registry_role" {
   count = length(var.clusters)
-  name = "${var.clusters[count.index].operator_role_suffix}-openshift-image-registry-installer-cloud-cr"
+  name = "${var.clusters[count.index].operator_role_prefix}-openshift-image-registry-installer-cloud-cr"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [

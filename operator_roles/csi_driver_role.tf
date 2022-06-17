@@ -1,6 +1,6 @@
 resource "aws_iam_role" "csi_drivers_role" {
   count = length(var.clusters)
-  name = "${var.clusters[count.index].operator_role_suffix}-openshift-cluster-csi-drivers-ebs-cloud-cre"
+  name = "${var.clusters[count.index].operator_role_prefix}-openshift-cluster-csi-drivers-ebs-cloud-cre"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [

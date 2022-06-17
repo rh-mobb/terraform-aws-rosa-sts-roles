@@ -35,7 +35,7 @@ variable clusters {
     description = "clusters information for operator roles"
     type = list(object({
         id = string
-        operator_role_suffix = string
+        operator_role_prefix = string
     }))
     default = []
 }
