@@ -25,9 +25,9 @@ This terraform module tries to replicate rosa CLI roles/policies creation so tha
 
 ## Get OCM Information
 
-When create OCM roles. The roles require org id and external id.
+When create OCM roles, the roles require org id and external id.
 
-When create User role. The roles require user id and username.
+When create User role. the roles require user id and username.
 
 The information can be retrieved from ocm cli.
 ```
