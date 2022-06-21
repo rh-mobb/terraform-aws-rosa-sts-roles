@@ -89,7 +89,7 @@ In the above example:
 
 ```
 module sts_roles {
-    source = "../[Path_of_module]"
+    source = "rh-mobb/rosa-sts-roles/aws"
     ## Whether to Create Account Roles & Policies
     create_account_roles = false
     ## Create a list of ocm roles. The org id and external id retrieve from OCM
