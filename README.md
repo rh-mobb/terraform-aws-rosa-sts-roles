@@ -73,7 +73,7 @@ In order to create operator roles for clusters. Users need to provide cluster id
           "id": "",
           "name": "ebs-cloud-credentials",
           "namespace": "openshift-cluster-csi-drivers",
-          "role_arn": "arn:aws:iam::660250927410:role/shaozhenprivate-w4e1-openshift-cluster-csi-drivers-ebs-cloud-cre",
+          "role_arn": "arn:aws:iam::${AWS_ACCOUNT_ID}:role/shaozhenprivate-w4e1-openshift-cluster-csi-drivers-ebs-cloud-cre",
           "service_account": ""
         },
 ```
