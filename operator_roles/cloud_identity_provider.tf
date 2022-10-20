@@ -1,6 +1,6 @@
 resource "aws_iam_openid_connect_provider" "oidc_provider" {
   count = length(var.clusters)
-  url = "${var.rh_oidc_provider_url}/${var.clusters[count.index].id}"
+  url = "https://${var.rh_oidc_provider_url}"
 
   client_id_list = [
     "openshift",

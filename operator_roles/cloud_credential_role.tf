@@ -9,19 +9,19 @@ resource "aws_iam_role" "cloud-credential_role" {
         Effect = "Allow"
         Condition = {
             StringEquals = {
-                "rh-oidc.s3.us-east-1.amazonaws.com/${var.clusters[count.index].id}:sub" = ["system:serviceaccount:openshift-cloud-credential-operator:cloud-credential-operator"]
+                "${var.rh_oidc_provider_url}:sub" = ["system:serviceaccount:openshift-cloud-credential-operator:cloud-credential-operator"]
             }
         }
         Principal = {
-          Federated = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/rh-oidc.s3.us-east-1.amazonaws.com/${var.clusters[count.index].id}"
+          Federated = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/${var.rh_oidc_provider_url}"
         }
       },
     ]
   })
 
   tags = {
+    red-hat-managed = true
     rosa_cluster_id = var.clusters[count.index].id
-    rosa_role_prefix = "ManagedOpenShift"
     operator_namespace = "openshift-cloud-credential-operator"
     operator_name = "cloud-credential-operator-iam-ro-creds"
   }

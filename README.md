@@ -57,7 +57,7 @@ ocm whoami
 
 ## Get Clusters Information.
 
-In order to create operator roles for clusters. Users need to provide cluster id and operator role prefix
+In order to create operator roles for clusters. Users need to provide cluster id, operator role prefix and OIDC Endpoint URL
 
 ```
  rosa describe cluster -c shaozhenprivate -o json
@@ -82,6 +82,7 @@ In the above example:
 
 * cluster_id =  1srtno3qggal8ujsegvtb2njvbmhdu8c
 * operator_role_prefix = shaozhenprivate-w4e1
+* rh_oidc_endpoint_url = rh-oidc.s3.us-east-1.amazonaws.com
 
 ## Usage
 
@@ -107,5 +108,7 @@ module sts_roles {
         id = "1ssjjr1b2npkg9c70e8kqehfeqmscqeu"
         operator_role_prefix = "shaozhenprivate-w4e1"
     }]
+    rh_oidc_provider_url = "rh-oidc.s3.us-east-1.amazonaws.com/1srtno3qggal8ujsegvtb2njvbmhdu8c" 
+    rh_oidc_provider_thumbprint = "917e732d330f9a12404f73d8bea36948b929dffc"
 }
 ```
