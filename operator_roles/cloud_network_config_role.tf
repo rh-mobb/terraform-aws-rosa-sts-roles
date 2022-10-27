@@ -9,19 +9,19 @@ resource "aws_iam_role" "cloud_network_config_role" {
         Effect = "Allow"
         Condition = {
             StringEquals = {
-                "rh-oidc.s3.us-east-1.amazonaws.com/${var.clusters[count.index].id}:sub" = ["system:serviceaccount:openshift-cloud-network-config-controller:cloud-network-config-controller"]
+                "${var.rh_oidc_provider_url}:sub" = ["system:serviceaccount:openshift-cloud-network-config-controller:cloud-network-config-controller"]
             }
         }
         Principal = {
-          Federated = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/rh-oidc.s3.us-east-1.amazonaws.com/${var.clusters[count.index].id}"
+          Federated = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/${var.rh_oidc_provider_url}"
         }
       },
     ]
   })
 
   tags = {
+    red-hat-managed = true
     rosa_cluster_id = var.clusters[count.index].id
-    rosa_role_prefix = "ManagedOpenShift"
     operator_namespace = "openshift-cloud-network-config-controller"
     operator_name = "cloud-credentials"
   }

@@ -16,6 +16,7 @@ variable rh_oidc_provider_thumbprint {
 variable rh_oidc_provider_url {
     description = "oidc provider url"
     type = string
-    default = "https://rh-oidc.s3.us-east-1.amazonaws.com"
+    default = "rh-oidc.s3.us-east-1.amazonaws.com"
 }
+
 

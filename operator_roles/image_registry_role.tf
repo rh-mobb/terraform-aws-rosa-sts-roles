@@ -9,22 +9,22 @@ resource "aws_iam_role" "image_registry_role" {
         Effect = "Allow"
         Condition = {
             StringEquals = {
-                "rh-oidc.s3.us-east-1.amazonaws.com/${var.clusters[count.index].id}:sub" = [
+                "${var.rh_oidc_provider_url}:sub" = [
                   "system:serviceaccount:openshift-image-registry:cluster-image-registry-operator",
                   "system:serviceaccount:openshift-image-registry:registry"
                   ]
             }
         }
         Principal = {
-          Federated = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/rh-oidc.s3.us-east-1.amazonaws.com/${var.clusters[count.index].id}"
+          Federated = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/${var.rh_oidc_provider_url}"
         }
       },
     ]
   })
 
   tags = {
+    red-hat-managed = true
     rosa_cluster_id = var.clusters[count.index].id
-    rosa_role_prefix = "ManagedOpenShift"
     operator_namespace = "openshift-image-registry"
     operator_name = "installer-cloud-credentials"
   }

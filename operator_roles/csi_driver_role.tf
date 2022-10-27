@@ -9,22 +9,22 @@ resource "aws_iam_role" "csi_drivers_role" {
         Effect = "Allow"
         Condition = {
             StringEquals = {
-                "rh-oidc.s3.us-east-1.amazonaws.com/${var.clusters[count.index].id}:sub" = [
+                "${var.rh_oidc_provider_url}:sub" = [
                   "system:serviceaccount:openshift-cluster-csi-drivers:aws-ebs-csi-driver-operator",
                   "system:serviceaccount:openshift-cluster-csi-drivers:aws-ebs-csi-driver-controller-sa"
                   ]
             }
         }
         Principal = {
-          Federated = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/rh-oidc.s3.us-east-1.amazonaws.com/${var.clusters[count.index].id}"
+          Federated = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/${var.rh_oidc_provider_url}"
         }
       },
     ]
   })
 
   tags = {
+    red-hat-managed = true
     rosa_cluster_id = var.clusters[count.index].id
-    rosa_role_prefix = "ManagedOpenShift"
     operator_namespace = "openshift-cluster-csi-drivers"
     operator_name = "ebs-cloud-credentials"
   }

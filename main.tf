@@ -29,4 +29,6 @@ module user_role {
 module operator_role {
     source = "./operator_roles"
     clusters = var.clusters
+    rh_oidc_provider_thumbprint = var.rh_oidc_provider_thumbprint
+    rh_oidc_provider_url = var.rh_oidc_provider_url
 }
