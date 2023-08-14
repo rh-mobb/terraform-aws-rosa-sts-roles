@@ -1,5 +1,7 @@
 # terraform-aws-rosa-sts-roles
 
+> **IMPORTANT**  This repository is deprecated and archived.  Please visit [https://registry.terraform.io/namespaces/terraform-redhat](https://registry.terraform.io/namespaces/terraform-redhat) for the Official RH Terraform providers and modules.
+
 Create rosa roles, policies and identity provider in an declarative way
 Terraform AWS ROSA STS Roles
 
